@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>All-in-One College Assistant App</title>
+<title>College Assistant App</title>
 
 <style>
 body{
@@ -10,20 +10,7 @@ body{
     background:#f4f6f8;
     margin:0;
 }
-
-a{color:#2c3e50;text-decoration:none;font-weight:bold}
-
-/* LOGIN */
-.login-container{
-    width:320px;
-    margin:120px auto;
-    background:white;
-    padding:25px;
-    border-radius:8px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
-}
-
-.login-container input, select, button{
+select{
     width:100%;
     padding:10px;
     margin:8px 0;
@@ -31,18 +18,52 @@ a{color:#2c3e50;text-decoration:none;font-weight:bold}
     border-radius:5px;
 }
 
-button{
+/* LOGIN PAGE */
+.login-container{
+    width:300px;
+    margin:120px auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+.login-container h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.login-container input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.login-container button{
+    width:100%;
+    padding:10px;
     background:#2c3e50;
     color:white;
+    border:none;
+    border-radius:5px;
     cursor:pointer;
 }
 
-button:hover{background:#1a252f}
+.login-container button:hover{
+    background:#1a252f;
+}
 
-.error{color:red;text-align:center}
+.error{
+    color:red;
+    text-align:center;
+}
 
 /* DASHBOARD */
-#dashboard{display:none}
+#dashboard{
+    display:none;
+}
 
 header{
     background:#2c3e50;
@@ -51,17 +72,9 @@ header{
     text-align:center;
 }
 
-.logout{
-    background:red;
-    border:none;
-    color:white;
-    padding:6px 12px;
-    border-radius:5px;
-    float:right;
-    cursor:pointer;
+.container{
+    padding:20px;
 }
-
-.container{padding:20px}
 
 .card{
     background:white;
@@ -71,142 +84,224 @@ header{
     box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
-table{
+.logout{
+    background:red;
+    color:white;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    float:right;
+    cursor:pointer;
+}
+input[type="time"]{
     width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
-th,td{
+    padding:10px;
+    margin:8px 0;
     border:1px solid #ccc;
-    padding:8px;
-    text-align:center;
+    border-radius:5px;
 }
-th{background:#2c3e50;color:white}
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<div style="text-align:center;margin-top:50px" id="home">
-    <h1>📱 All-in-One College Assistant App</h1>
-    <p>Your Campus, One Platform</p>
-    <a href="#" onclick="showLogin()">Go to Login</a>
-</div>
-
-<!-- LOGIN -->
-<div class="login-container" id="login" style="display:none">
-<h2>🔐 Login</h2>
-<input id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p class="error" id="error"></p>
+<!-- LOGIN PAGE -->
+<div class="login-container" id="login">
+    <h2>🔐 Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p class="error" id="error"></p>
 </div>
 
 <!-- DASHBOARD -->
 <div id="dashboard">
-<header>
-<button class="logout" onclick="logout()">Logout</button>
-<h2>College Assistant Dashboard</h2>
-</header>
+    <header>
+        <button class="logout" onclick="logout()">Logout</button>
+        <h1>📱 All-in-One College Assistant</h1>
+        <p>Welcome to Your Campus Portal</p>
+    </header>
 
-<div class="container">
+    <div class="container">
 
-<!-- WEEKLY TIMETABLE -->
-<div class="card">
-<h3>📅 Weekly Timetable</h3>
-<table>
-<tr><th>Day</th><th>9-10</th><th>10-11</th><th>11-12</th><th>2-3</th></tr>
-<tr><td>Mon</td><td>Maths</td><td>Physics</td><td>Lab</td><td>CS</td></tr>
-<tr><td>Tue</td><td>CS</td><td>Maths</td><td>English</td><td>Lab</td></tr>
-<tr><td>Wed</td><td>Physics</td><td>Maths</td><td>CS</td><td>Library</td></tr>
-</table>
-</div>
+        <div class="card">
+            <h2>👨‍🏫 Faculty</h2>
+            <p>Faculty profiles and contact details.</p>
+        </div>
 
-<!-- ATTENDANCE -->
-<div class="card">
-<h3>📝 Attendance</h3>
-<input placeholder="Subject">
-<input type="date">
-<select>
-<option>Present</option>
-<option>Absent</option>
-</select>
-<button>Submit Attendance</button>
-</div>
+        <div class="card">
+            <h2>🍽 Canteen</h2>
+            <p>Daily menu and food feedback.</p>
+        </div>
 
-<!-- HOSTEL LEAVE -->
-<div class="card">
-<h3>🏠 Hostel Leave</h3>
-<input type="date">
-<input type="date">
-<input placeholder="Reason">
-<button>Apply Leave</button>
-</div>
-
-<!-- CANTEEN FEEDBACK -->
-<div class="card">
-<h3>🍽 Canteen Feedback</h3>
-<select>
-<option>Excellent</option>
-<option>Good</option>
-<option>Average</option>
-<option>Poor</option>
-</select>
-<input placeholder="Comments">
-<button>Submit Feedback</button>
-</div>
-
-<!-- CLASSROOM NAVIGATION -->
-<div class="card">
-<h3>🧭 Classroom Navigation</h3>
-<select>
-<option>Main Block</option>
-<option>Science Block</option>
-<option>Engineering Block</option>
-</select>
-<select>
-<option>Ground Floor</option>
-<option>1st Floor</option>
-<option>2nd Floor</option>
-</select>
-<input placeholder="Room No (eg: CSE-204)">
-<button onclick="alert('Navigation Started')">Start Navigation</button>
-</div>
-
-<!-- STUDY PLANNER -->
-<div class="card">
-<h3>📘 Study Planner</h3>
-<input placeholder="Subject">
-<input type="date">
-<input type="time">
-<input type="time">
-<button>Add Plan</button>
-</div>
-
-</div>
+        <div class="card">
+            <h2>🚌 Transport</h2>
+            <p>Bus routes and timings.</p>
+        </div>
+    </div>
 </div>
 
 <script>
-function showLogin(){
-    home.style.display="none";
-    login.style.display="block";
-}
-
 function login(){
-    if(username.value=="student" && password.value=="1234"){
-        login.style.display="none";
-        dashboard.style.display="block";
-    }else{
-        error.innerText="Invalid credentials";
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    // Demo credentials
+    if(user === "student" && pass === "campus"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Invalid username or password";
     }
 }
 
 function logout(){
-    dashboard.style.display="none";
-    home.style.display="block";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("login").style.display = "block";
+}
+function navigate(){
+    let b = document.getElementById("building").value;
+    let f = document.getElementById("floor").value;
+    let r = document.getElementById("room").value;
+
+    if(r === ""){
+        document.getElementById("navResult").innerText = "Please enter room number";
+        return;
+    }
+
+    document.getElementById("navResult").innerText =
+        "➡ Navigate to " + b + ", " + f + ", Room " + r +
+        ". Follow the signs and corridor arrows.";
+}
+function addPlan(){
+    let sub = document.getElementById("subject").value;
+    let date = document.getElementById("studyDate").value;
+    let from = document.getElementById("fromTime").value;
+    let to = document.getElementById("toTime").value;
+
+    if(sub=="" || date=="" || from=="" || to==""){
+        document.getElementById("planResult").innerText = "Please fill all fields";
+        return;
+    }
+
+    document.getElementById("planResult").innerText =
+        "📌 Study Plan Added: " + sub + 
+        " on " + date + 
+        " from " + from + 
+        " to " + to;
 }
 </script>
+<div class="container">
+<!-- STUDY PLANNER -->
+<div class="card">
+    <h2>📘 Study Planner</h2>
+
+    <label>Subject</label>
+    <input type="text" id="subject" placeholder="Eg: Mathematics">
+
+    <label>Date</label>
+    <input type="date" id="studyDate">
+
+    <label>From Time</label>
+    <input type="time" id="fromTime">
+
+    <label>To Time</label>
+    <input type="time" id="toTime">
+
+    <br><br>
+    <button onclick="addPlan()">Add to Planner</button>
+
+    <p id="planResult" style="margin-top:10px;font-weight:bold;"></p>
+</div>
+<!-- CLASSROOM NAVIGATION -->
+<div class="card">
+    <h2>🧭 Classroom Navigation</h2>
+
+    <label>Building</label>
+    <select id="building">
+        <option>Main Block</option>
+        <option>Science Block</option>
+        <option>Engineering Block</option>
+    </select>
+
+    <label>Floor</label>
+    <select id="floor">
+        <option>Ground Floor</option>
+        <option>1st Floor</option>
+        <option>2nd Floor</option>
+        <option>3rd Floor</option>
+    </select>
+
+    <label>Room Number</label>
+    <input type="text" id="room" placeholder="Eg: CSE-204">
+
+    <br><br>
+    <button onclick="navigate()">Start Navigation</button>
+
+    <p id="navResult" style="margin-top:10px;font-weight:bold;"></p>
+</div>
+
+    <!-- TIMETABLE -->
+    <div class="card">
+        <h2>📅 Timetable</h2>
+        <p>View class schedules and exam dates.</p>
+    </div>
+
+    <!-- ATTENDANCE FORM -->
+    <div class="card">
+        <h2>📝 Attendance</h2>
+        <label>Subject</label>
+        <input type="text" placeholder="Enter subject">
+
+        <label>Date</label>
+        <input type="date">
+
+        <label>Status</label>
+        <select>
+            <option>Present</option>
+            <option>Absent</option>
+        </select>
+
+        <br><br>
+        <button>Submit Attendance</button>
+    </div>
+
+    <!-- HOSTEL LEAVE FORM -->
+    <div class="card">
+        <h2>🏠 Hostel Leave Request</h2>
+
+        <label>From Date</label>
+        <input type="date">
+
+        <label>To Date</label>
+        <input type="date">
+
+        <label>Reason</label>
+        <input type="text" placeholder="Reason for leave">
+
+        <br><br>
+        <button>Apply Leave</button>
+    </div>
+
+    <!-- CANTEEN FEEDBACK FORM -->
+    <div class="card">
+        <h2>🍽 Canteen Feedback</h2>
+
+        <label>Food Quality</label>
+        <select>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+        </select>
+
+        <label>Comments</label>
+        <input type="text" placeholder="Your feedback">
+
+        <br><br>
+        <button>Submit Feedback</button>
+    </div>
+
 
 </body>
 </html>
