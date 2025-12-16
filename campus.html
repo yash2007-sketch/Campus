@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>All-in-One College Assistant App</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+}
+
+a{color:#2c3e50;text-decoration:none;font-weight:bold}
+
+/* LOGIN */
+.login-container{
+    width:320px;
+    margin:120px auto;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+.login-container input, select, button{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    background:#2c3e50;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{background:#1a252f}
+
+.error{color:red;text-align:center}
+
+/* DASHBOARD */
+#dashboard{display:none}
+
+header{
+    background:#2c3e50;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+.logout{
+    background:red;
+    border:none;
+    color:white;
+    padding:6px 12px;
+    border-radius:5px;
+    float:right;
+    cursor:pointer;
+}
+
+.container{padding:20px}
+
+.card{
+    background:white;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+th{background:#2c3e50;color:white}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div style="text-align:center;margin-top:50px" id="home">
+    <h1>📱 All-in-One College Assistant App</h1>
+    <p>Your Campus, One Platform</p>
+    <a href="#" onclick="showLogin()">Go to Login</a>
+</div>
+
+<!-- LOGIN -->
+<div class="login-container" id="login" style="display:none">
+<h2>🔐 Login</h2>
+<input id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p class="error" id="error"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+<header>
+<button class="logout" onclick="logout()">Logout</button>
+<h2>College Assistant Dashboard</h2>
+</header>
+
+<div class="container">
+
+<!-- WEEKLY TIMETABLE -->
+<div class="card">
+<h3>📅 Weekly Timetable</h3>
+<table>
+<tr><th>Day</th><th>9-10</th><th>10-11</th><th>11-12</th><th>2-3</th></tr>
+<tr><td>Mon</td><td>Maths</td><td>Physics</td><td>Lab</td><td>CS</td></tr>
+<tr><td>Tue</td><td>CS</td><td>Maths</td><td>English</td><td>Lab</td></tr>
+<tr><td>Wed</td><td>Physics</td><td>Maths</td><td>CS</td><td>Library</td></tr>
+</table>
+</div>
+
+<!-- ATTENDANCE -->
+<div class="card">
+<h3>📝 Attendance</h3>
+<input placeholder="Subject">
+<input type="date">
+<select>
+<option>Present</option>
+<option>Absent</option>
+</select>
+<button>Submit Attendance</button>
+</div>
+
+<!-- HOSTEL LEAVE -->
+<div class="card">
+<h3>🏠 Hostel Leave</h3>
+<input type="date">
+<input type="date">
+<input placeholder="Reason">
+<button>Apply Leave</button>
+</div>
+
+<!-- CANTEEN FEEDBACK -->
+<div class="card">
+<h3>🍽 Canteen Feedback</h3>
+<select>
+<option>Excellent</option>
+<option>Good</option>
+<option>Average</option>
+<option>Poor</option>
+</select>
+<input placeholder="Comments">
+<button>Submit Feedback</button>
+</div>
+
+<!-- CLASSROOM NAVIGATION -->
+<div class="card">
+<h3>🧭 Classroom Navigation</h3>
+<select>
+<option>Main Block</option>
+<option>Science Block</option>
+<option>Engineering Block</option>
+</select>
+<select>
+<option>Ground Floor</option>
+<option>1st Floor</option>
+<option>2nd Floor</option>
+</select>
+<input placeholder="Room No (eg: CSE-204)">
+<button onclick="alert('Navigation Started')">Start Navigation</button>
+</div>
+
+<!-- STUDY PLANNER -->
+<div class="card">
+<h3>📘 Study Planner</h3>
+<input placeholder="Subject">
+<input type="date">
+<input type="time">
+<input type="time">
+<button>Add Plan</button>
+</div>
+
+</div>
+</div>
+
+<script>
+function showLogin(){
+    home.style.display="none";
+    login.style.display="block";
+}
+
+function login(){
+    if(username.value=="student" && password.value=="1234"){
+        login.style.display="none";
+        dashboard.style.display="block";
+    }else{
+        error.innerText="Invalid credentials";
+    }
+}
+
+function logout(){
+    dashboard.style.display="none";
+    home.style.display="block";
+}
+</script>
+
+</body>
+</html>
